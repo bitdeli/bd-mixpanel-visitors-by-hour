@@ -1,5 +1,5 @@
 from bitdeli import Profiles, Title, Description, set_theme
-from textutil import Percent
+from bitdeli.textutil import Percent
 from itertools import chain
 from datetime import datetime
 from collections import Counter
@@ -11,7 +11,7 @@ WINDOW = 48
 text = {'window': WINDOW,
         'compare': COMPARE_DAYS}
 
-set_theme('builder')
+set_theme('lime')
 
 def average(window):
     total = sum(freq for hour, freq in window)
