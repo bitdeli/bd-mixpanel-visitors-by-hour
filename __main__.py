@@ -1,5 +1,5 @@
 from bitdeli import Profiles, Title, Description, set_theme
-from textutil import Percent
+from bitdeli.textutil import Percent
 from itertools import chain
 from datetime import datetime
 from collections import Counter
@@ -11,7 +11,7 @@ WINDOW = 48
 text = {'window': WINDOW,
         'compare': COMPARE_DAYS}
 
-set_theme('builder')
+set_theme('lime')
 
 def average(window):
     total = sum(freq for hour, freq in window)
@@ -22,7 +22,7 @@ def hourly_stats(profiles):
     for i, profile in enumerate(profiles):
         events = chain.from_iterable(profile['events'].itervalues())
         hours.update(frozenset(hour for hour, freq in events))
-    limit = max(hours) - CHART_HOURS * 24
+    limit = max(hours) - CHART_HOURS
     return [(datetime.utcfromtimestamp(hour * 3600).isoformat(), freq)
             for hour, freq in sorted(hours.iteritems()) if hour > limit]
 
